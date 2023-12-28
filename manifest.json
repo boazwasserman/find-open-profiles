@@ -1,0 +1,38 @@
+{
+    "manifest_version": 3,
+    "name": "Sales Navigator Find Open Profiles",
+    "version": "1.0",
+    "description": "Finds open profiles in Sales Navigator search results",
+    "permissions": ["activeTab", "scripting", "tabs"],
+    "background": {
+        "service_worker": "src/background.js"
+    },
+    "content_scripts": [
+        {
+            "matches": ["https://www.linkedin.com/sales/search/people*"],
+            "js": ["src/content.js"]
+        }
+    ],
+    "action": {
+        "default_popup": "src/popup.html",
+        "default_icon": {
+            "16": "src/icons/icon16.png",
+            "48": "src/icons/icon48.png",
+            "128": "src/icons/icon128.png"
+        }
+    },
+    "commands": {
+        "hide": {
+            "suggested_key": {
+                "default": "Ctrl+Shift+F", 
+                "mac": "MacCtrl+Shift+F"
+            },
+            "description": "Find open profiles"
+        }
+    },
+    "icons": {
+        "16": "src/icons/icon16.png",
+        "48": "src/icons/icon48.png",
+        "128": "src/icons/icon128.png"
+    }
+}
